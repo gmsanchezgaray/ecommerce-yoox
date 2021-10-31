@@ -1,0 +1,52 @@
+[
+  {
+    "nombre": "Celular Motorola Edge 20 Lite 128 GB Gris",
+    "descripcion": "El celular Motorola Edge 20 Lite incorpora un sistema de cámaras con sensor principal de 108 MP1 que capturá más colores y detalles en cada toma con la tecnología Ultra Pixel, que ofrece una sensibilidad 9 veces mayor en condiciones de poca luz. Mientras que, la cámara selfie de alta resolución de 32 MP creá retratos con detalles increíbles gracias a la sensibilidad 4 veces mayor en condiciones de poca luz.",
+    "foto": "https://images.fravega.com/f300/1aedd5ab459865b7396a58ebc0d8c7b4.jpg.webp",
+    "precio": 69.999,
+    "stock": 15,
+    "codigo": "ce69h1bnijai",
+    "id": 2,
+    "timestamp": 1635695862271
+  },
+  {
+    "nombre": "Notebook HP Pavilion Gaming 16,1“ Intel® Core™ i5-10300H 8GB 512GB 16-A0061LA",
+    "descripcion": "La notebook HP 16-A0061LA cuenta con un diseño compacto y moderno. Gracias a sus moderadas medidas de: 37 cm de largo x 26,25 cm de ancho x 2,35 cm de alto y su liviano peso de: 2,36 Kg vas a poder llevarla con vos a donde quieras.",
+    "foto": "https://images.fravega.com/f300/1aedd5ab459865b7396a58ebc0d8c7b4.jpg.webp",
+    "precio": 154.999,
+    "stock": 37,
+    "codigo": "n15ffgpdd1i7",
+    "id": 3,
+    "timestamp": 1635695897852
+  },
+  {
+    "nombre": "Celular Samsung Galaxy A21s 128 GB Negro",
+    "descripcion": "Posee una memoria interna (ROM) de 128 GB* mientras que la externa se puede expandir mediante una tarjeta micro SD hasta 512 GB. Vas a poder almacenar videos, fotos y música sin problemas.",
+    "foto": "https://images.fravega.com/f300/7b6ba44f90c0cc399c1d0d71ab2fac00.jpg.webp",
+    "precio": 40.999,
+    "stock": 31,
+    "codigo": "63969ifhm7h2",
+    "id": 4,
+    "timestamp": 1635695991968
+  },
+  {
+    "nombre": "Parlantes Para PC Escritorio Havit HV-SK599 Blue",
+    "descripcion": "Parlante Havit PC HV-SK599 USB 1 X 3,5MM Parlantes estéreo.",
+    "foto": "https://images.fravega.com/f300/a8b4b2a4b62e6bbb4257b8b368ea0ff9.jpg.webp",
+    "precio": 1.799,
+    "stock": 12,
+    "codigo": "38e8ci0o555",
+    "id": 5,
+    "timestamp": 1635696200488
+  },
+  {
+    "nombre": "Webcam Hd 1080p con Micrófono Kanji KJFHD",
+    "descripcion": "Webcam para pc Plugy play Kanji: Puerto USB 2.0 / 3.0, compatible con: Windows 8/10 / Android TV.",
+    "foto": "https://images.fravega.com/f300/949a48c2455051ec5093e8727256dc1f.jpg.webp",
+    "precio": 2.599,
+    "stock": 8,
+    "codigo": "ojf18pek4obk",
+    "id": 6,
+    "timestamp": 1635696243038
+  }
+]
