@@ -30,6 +30,25 @@ class Contenedor {
       console.log("No se ha podido guardar =>", error);
     }
   }
+
+  // Recibe un objeto para agregar a un tipo específico.
+  async addObject(Object, Key) {
+    try {
+      const data = await fs.promises.readFile(`./${this.file}`, "utf-8");
+      if (data == "") {
+        console.log("El archivo está vacio.");
+      } else {
+        const dataParsed = JSON.parse(data);
+        console.log(dataParsed[0][Key]);
+        dataParsed[0][Key].push(Object);
+
+        const productsString = JSON.stringify(dataParsed, null, 2);
+        await fs.promises.writeFile(`./${this.file}`, productsString);
+      }
+    } catch (error) {
+      console.log("No se ha podido agregar el elemento al destino =>", error);
+    }
+  }
   // Recibe un id y devuelve el objeto con ese id, o null si no está.
   async getById(Number) {
     try {

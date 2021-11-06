@@ -1,0 +1,18 @@
+[
+  {
+    "productos": [
+      {
+        "nombre": "Notebook HP Pavilion Gaming 16,1“ Intel® Core™ i5-10300H 8GB 512GB 16-A0061LA",
+        "descripcion": "La notebook HP 16-A0061LA cuenta con un diseño compacto y moderno. Gracias a sus moderadas medidas de: 37 cm de largo x 26,25 cm de ancho x 2,35 cm de alto y su liviano peso de: 2,36 Kg vas a poder llevarla con vos a donde quieras.",
+        "foto": "https://images.fravega.com/f300/1aedd5ab459865b7396a58ebc0d8c7b4.jpg.webp",
+        "precio": 154.999,
+        "stock": 37,
+        "codigo": "n15ffgpdd1i7",
+        "id": 3,
+        "timestamp": 1635695897852
+      }
+    ],
+    "id": 1,
+    "timestamp": 1636163506163
+  }
+]

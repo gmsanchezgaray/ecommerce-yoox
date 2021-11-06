@@ -1,5 +1,5 @@
 const Contenedor = require("../../Contenedor");
-const carritoRouter = require("../routers/carrito");
+const { getAllProducts, getOneProduct } = require("./productos");
 
 const carritoContenedor = new Contenedor("./data/carritos.json");
 
@@ -19,13 +19,18 @@ const getProductsByIdCart = async (indexNumber) => {
   return products;
 };
 
-const addProductToCart = async (indexNumber, productsToAdd) => {
-  const cartUpdated = await carritoContenedor.update(
-    indexNumber,
-    productsToAdd
-  );
+const addProductToCart = async (indexNumber) => {
+  const productos = await getAllProducts();
+  const idsProductos = productos.map((product) => {
+    return product.id;
+  });
 
-  return cartUpdated;
+  idsProductos.map(async () => {
+    let producto = await getOneProduct(parseInt(indexNumber));
+    if (producto) {
+      await carritoContenedor.addObject(producto, "productos");
+    }
+  });
 };
 
 const deleteProductToCart = async (indexNumber, indexProduct) => {

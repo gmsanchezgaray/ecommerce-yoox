@@ -19,3 +19,16 @@
 // id, timestamp(carrito), producto: { id, timestamp(producto), nombre, descripcion, código, foto (url), precio, stock }
 // El timestamp puede implementarse con Date.now()
 // Comenzar a trabajar con el listado de productos y el carrito de compras en memoria del servidor, luego persistirlos en el filesystem.
+
+// el endpoint api/carrito/:id/productos (POST) debe recibir un array de id productos, se recorre el array buscando el producto (de la lista de productos que ya tenemos) por su id y así es que lo agregamos al carrito.
+// Ejemplo:
+
+// {
+
+// productos: [{id: 1}, {id: 2}, ...]
+
+// }
+
+// idProductos.map((id) => let producto = <modeloProducto>.findById(id); if (producto) { <modeloCarrito>.addProducto(producto) })
+
+// Hagamos el cambio respectivo así nos queda un mejor endpoint.

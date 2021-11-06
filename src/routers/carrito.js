@@ -28,18 +28,17 @@ carritoRouter.get("/:id/productos", async (req, res) => {
 
 // POST '/api/carrito' -> Crea un carrito y devuelve su id.
 carritoRouter.post("/", async (req, res) => {
-  const newChart = req.body;
+  // const newChart = req.body;
 
-  const dataWithId = await createCart(newChart);
-  res.send({ ...newChart, id: dataWithId });
+  const dataWithId = await createCart({ products: [] });
+  res.send({ id: dataWithId });
 });
 
 // POST '/:id/productos' -> Para incorporar productos al carrito por su id de producto.
 carritoRouter.post("/:id/productos", async (req, res) => {
-  const cartId = req.params.id;
-  const cartWithNewProduct = req.body;
+  const idProductToAdd = req.params.id;
 
-  const cart = await addProductToCart(cartId, cartWithNewProduct);
+  const cart = await addProductToCart(idProductToAdd);
   res.send({ data: cart });
 });
 
