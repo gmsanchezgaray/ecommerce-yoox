@@ -1,44 +1,53 @@
 const express = require("express");
-const {
-  createCart,
-  deleteCart,
-  getProductsByIdCart,
-  addProductToCart,
-  deleteProductToCart,
-} = require("../models/carrito");
+
+const { cartDao } = require("../daos");
+const { productDao } = require("../daos");
 
 const carritoRouter = express.Router();
 
 // Rutas de carrito
 
-carritoRouter.get("/", (req, res) => {
-  res.send({ message: "sucess", data: ["a", "b", "c", "d", "f"] });
-});
-
 // GET '/api/productos/:id' -> Me permite listar todos los productos guardados en el carrito.
 carritoRouter.get("/:id/productos", async (req, res) => {
   const index = req.params.id;
-  const data = await getProductsByIdCart(index);
+  const data = await cartDao.getById(index);
+  const { productos } = data;
   if (!data) {
     res.send({ error: "carrito no encontrado" });
   } else {
     res.send({ data });
+    return productos;
   }
 });
 
 // POST '/api/carrito' -> Crea un carrito y devuelve su id.
 carritoRouter.post("/", async (req, res) => {
-  // const newChart = req.body;
+  const dateTime = Date.now();
+  const dataWithId = await cartDao.save({ productos: [], timestamp: dateTime });
 
-  const dataWithId = await createCart({ products: [] });
-  res.send({ id: dataWithId });
+  res.send({ dataWithId });
 });
 
 // POST '/:id/productos' -> Para incorporar productos al carrito por su id de producto.
 carritoRouter.post("/:id/productos", async (req, res) => {
   const idProductToAdd = req.params.id;
 
+  const addProductToCart = async (indexNumber) => {
+    const productos = await productDao.getAll();
+    const idsProductos = productos.map((product) => {
+      return product.id;
+    });
+
+    idsProductos.map(async () => {
+      let producto = await productDao.getById(indexNumber);
+      if (producto) {
+        await cartDao.addObject(producto, "productos");
+      }
+    });
+  };
+
   const cart = await addProductToCart(idProductToAdd);
+
   res.send({ data: cart });
 });
 
@@ -47,13 +56,37 @@ carritoRouter.delete("/:id/productos/:id_prod", async (req, res) => {
   const cartId = req.params.id;
   const productId = req.params.id_prod;
 
-  const cart = await deleteProductToCart(cartId, productId);
-  res.send({ data: cart });
+  const deleteProductToCart = async (indexNumber, indexProduct) => {
+    const cart = await cartDao.getById(indexNumber);
+    const { productos } = cart;
+
+    const newListOfProducts = productos.filter(
+      (producToDelete) => producToDelete.id != indexProduct
+    );
+
+    const newCart = {
+      ...cart,
+      productos: newListOfProducts,
+    };
+
+    const cartUpdated = await cartDao.update(indexNumber, newCart);
+    return cartUpdated;
+  };
+
+  const carrito = await deleteProductToCart(cartId, productId);
+
+  res.send({ data: carrito });
 });
 
 // DELETE '/api/carrito/:id' -> Vacía un carrito y lo elimina.
 carritoRouter.delete("/:id", async (req, res) => {
   const index = req.params.id;
+
+  const deleteCart = async (indexNumber) => {
+    const chartToRemove = await cartDao.deleteById(indexNumber);
+    return chartToRemove;
+  };
+
   const dataRemoved = await deleteCart(index);
 
   if (!dataRemoved) {
